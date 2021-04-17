@@ -1,11 +1,32 @@
-import React from 'react';
-import { Hello } from './Hello.jsx';
-import { Info } from './Info.jsx';
+import { Meteor } from 'meteor/meteor';
+import React, { useState, Fragment } from 'react';
+import { useTracker } from 'meteor/react-meteor-data';
+import { LoginForm } from './LoginForm';
+import { Week } from './components/weeklySpread/Week.jsx';
+import { Navbar } from './components/common/Navbar.jsx';
 
-export const App = () => (
-  <div>
-    <h1>Welcome to Meteor!</h1>
-    <Hello/>
-    <Info/>
-  </div>
-);
+export const App = () => {
+
+  const logout = () => Meteor.logout();
+  const user = useTracker(() => Meteor.user());
+
+  return (
+    <main>
+      <div className="app">
+        <Navbar user={user} />
+
+        <div className="main">
+
+          {user ? (
+          <Fragment>
+            <Week />
+          </Fragment>
+          ) : (
+            <LoginForm />
+          )}
+
+        </div>
+      </div>
+    </main>
+  );
+};
