@@ -1,0 +1,47 @@
+@import "variables.import.less";
+@import "for.import.less";
+
+// pixel sizes, divided by 16 in "for" mixin to get rem value
+@sizes: 0, 2, 4, 8, 16, 32, 64, 128;
+
+.for(@sizes, {
+    .mb-@{value} {
+        margin-bottom: ~"@{rem}rem";
+    }
+
+    .mt-@{value} {
+        margin-top: ~"@{rem}rem";
+    }
+
+    .mr-@{value} {
+        margin-right: ~"@{rem}rem";
+    }
+
+    .ml-@{value} {
+        margin-left: ~"@{rem}rem";
+    }
+
+    .m-@{value} {
+        margin: ~"@{rem}rem";
+    }
+
+    .pb-@{value} {
+        padding-bottom: ~"@{rem}rem";
+    }
+
+    .pt-@{value} {
+        padding-top: ~"@{rem}rem";
+    }
+
+    .pr-@{value} {
+        padding-right: ~"@{rem}rem";
+    }
+
+    .pl-@{value} {
+        padding-left: ~"@{rem}rem";
+    }
+
+    .p-@{value} {
+        padding: ~"@{rem}rem";
+    }
+});

@@ -15,10 +15,11 @@ const toggleChecked = ({ _id, isChecked }) => {
 const deleteTask = ({ _id }) => Meteor.call('tasks.remove', _id);
 const deleteEvent = ({ _id }) => Meteor.call('events.remove', _id);
 
-
 export const Weekday = ({ day, date }) => {
     const user = useTracker(() => Meteor.user());
     const [hideCompleted, setHideCompleted] = useState(false);
+    const [showTaskForm, setShowTaskForm] = useState(false);
+    const [showEventForm, setShowEventForm] = useState(false);
     const hideCompletedFilter = { isChecked: { $ne: true } };
     const userFilter = user ? { userId: user._id } : {};
     const dateFilter = { date: formatDate(date) };
@@ -38,7 +39,7 @@ export const Weekday = ({ day, date }) => {
   
       const tasks = TasksCollection.find(
         hideCompleted ? pendingOnlyFilter : userDateFilter, {
-          sort: {createdAt: -1}
+          sort: {createdAt: 1}
         }
       ).fetch();
   
@@ -57,7 +58,7 @@ export const Weekday = ({ day, date }) => {
         // }
     
         const events = EventsCollection.find(userDateFilter, {
-            sort: {createdAt: -1}
+            sort: {createdAt: 1}
           }
         ).fetch();
     
@@ -65,37 +66,58 @@ export const Weekday = ({ day, date }) => {
       });
 
     return (
-        <li>
-            <div className="weekday-block">
-                <h2 className="header">{ day } { date.getDate() } { formatDate(date) === formatDate(new Date()) ? (<span>⭐</span>) : (<span></span>) }</h2>
-                <TaskForm date={ formatDate(date) } />
-                <div className="filter">
+        <li className="weekday-block m-8 p-16">
+            <div>
+                <h2 className="header mt-0 mb-8">{ day } / { date.getDate() } { formatDate(date) === formatDate(new Date()) ? (<span>⭐</span>) : (<span></span>) }</h2>
+                {/* <div className="filter">
                     <button onClick={() => setHideCompleted(!hideCompleted)}>
                     {hideCompleted ? 'Show All' : 'Hide Completed'}
                     </button>
+                </div> */}
+
+                <div class="tasks">
+                    {isLoading && <div className="loading">loading...</div>}
+                    
+                    <div className="week-items-container mb-16">
+                        <h3 className="header m-0">To Do</h3>
+                        <button onClick={() => setShowTaskForm(!showTaskForm)} className="addTask icon mt-0 mb-0 ml-16 p-8">
+                            <img className={ showTaskForm ? 'cancel' : 'add'} alt={ showTaskForm ? "Cancel add task" : "Add task" } src="/images/icons/close_black_24dp.svg" />
+                        </button>
+                        { showTaskForm ? (
+                            <TaskForm setShowTaskForm={ setShowTaskForm } date={ formatDate(date) } />
+                        ) : (<div></div>)}
+                    </div>
+                    <ul className="p-0 pl-16">
+                        { tasks.map(task => <Task 
+                        key={ task._id } 
+                        task={ task } 
+                        onCheckboxClick={ toggleChecked }
+                        onDeleteClick={ deleteTask }
+                        />) }
+                    </ul>
                 </div>
-
-                {isLoading && <div className="loading">loading...</div>}
                 
-                <ul className="tasks">
-                    { tasks.map(task => <Task 
-                    key={ task._id } 
-                    task={ task } 
-                    onCheckboxClick={ toggleChecked }
-                    onDeleteClick={ deleteTask }
-                    />) }
-                </ul>
+                <div class="events">
+                    {isLoadingEvents && <div className="loading">loading...</div>}
 
-                <EventForm date={ formatDate(date) } />
-                {isLoadingEvents && <div className="loading">loading...</div>}
-                
-                <ul className="events">
-                    { events.map(event => <Event 
-                    key={ event._id } 
-                    event={ event } 
-                    onDeleteClick={ deleteEvent }
-                    />) }
-                </ul>
+                    <div className="week-items-container mb-16">
+                        <h3 className="header m-0">Events</h3>
+                        <button onClick={() => setShowEventForm(!showEventForm)} className="addEvent icon mt-0 mb-0 ml-16 p-8">
+                            <img className={ showEventForm ? 'cancel' : 'add'} alt={ showEventForm ? "Cancel add task" : "Add task" } src="/images/icons/close_black_24dp.svg" />
+                        </button>
+                        { showEventForm ? (
+                            <EventForm setShowEventForm={ setShowEventForm } date={ formatDate(date) } />
+                        ) : (<div></div>)}
+                    </div>
+
+                    <ul className="p-0 pl-16">
+                        { events.map(event => <Event 
+                        key={ event._id } 
+                        event={ event } 
+                        onDeleteClick={ deleteEvent }
+                        />) }
+                    </ul>
+                </div>
             </div>
         </li>
     );

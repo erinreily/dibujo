@@ -20,5 +20,8 @@ export const formatDate = (date) => {
 
 // get Date for a day of the week relative to the passed Date
 export const getOffsetDate = (relativeDate, weekday) => {
-    return new Date(new Date().setDate(relativeDate.getDate() - relativeDate.getDay() + dayArray.indexOf(weekday)));
+    let offsetDate = new Date(relativeDate.getTime()),
+        offset = dayArray.indexOf(weekday) - relativeDate.getDay();
+    offsetDate.setDate(offsetDate.getDate() + offset);
+    return offsetDate;
 }

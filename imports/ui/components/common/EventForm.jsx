@@ -1,7 +1,7 @@
 import { Meteor } from 'meteor/meteor';
 import React, { useState } from 'react';
 
-export const EventForm = ({ date }) => {
+export const EventForm = ({ setShowEventForm, date }) => {
     const [text, setText] = useState('');
     const inputId = "addEvent" + date;
 
@@ -13,18 +13,18 @@ export const EventForm = ({ date }) => {
         Meteor.call('events.insert', text, date);
 
         setText("");
+        setShowEventForm(false);
     }
 
     return (
-        <form className="event-form" onSubmit={handleSubmit}>
-            <label htmlFor={ inputId }>Type to add a new event
+        <form className="event-form m-4 p-4" onSubmit={handleSubmit}>
+            <label htmlFor={ inputId }>New event: </label>
                 <input
                     id={ inputId }
                     type="text"
                     value={text}
                     onChange={(e) => setText(e.target.value)}
                 />
-            </label>
 
             <button type="submit">Add Event</button>
         </form>

@@ -11,7 +11,9 @@ export const Task = ({ task, onCheckboxClick, onDeleteClick }) => {
                 aria-label={task.text}
             />
             <span>{task.text}</span>
-            <button onClick={() => onDeleteClick(task) }>&times;</button>
+            <button className="icon-only m-0 p-0" onClick={() => onDeleteClick(task) }>
+                <img alt="delete task" src="/images/icons/delete_black_24dp.svg" />
+            </button>
         </li>
     );
 };

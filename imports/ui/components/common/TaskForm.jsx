@@ -1,7 +1,7 @@
 import { Meteor } from 'meteor/meteor';
 import React, { useState } from 'react';
 
-export const TaskForm = ({ date }) => {
+export const TaskForm = ({ setShowTaskForm, date }) => {
     const [text, setText] = useState('');
     const inputId = "addTask" + date;
 
@@ -13,20 +13,23 @@ export const TaskForm = ({ date }) => {
         Meteor.call('tasks.insert', text, date);
 
         setText("");
+        setShowTaskForm(false);
     }
 
     return (
-        <form className="task-form" onSubmit={handleSubmit}>
-            <label htmlFor={ inputId }>Type to add a new task
+        <div class="modal">
+            <span class="close">&times;</span>
+            <form className="task-form m-4 p-4" onSubmit={handleSubmit}>
+                <label htmlFor={ inputId }>New task: </label>
                 <input
                     id={ inputId }
                     type="text"
                     value={text}
                     onChange={(e) => setText(e.target.value)}
                 />
-            </label>
-
-            <button type="submit">Add Task</button>
-        </form>
+                
+                <button type="submit">Add task</button>
+            </form>
+        </div>
     )
 };
