@@ -1,11 +1,15 @@
-import { Meteor } from 'meteor/meteor';
-import React, { useState } from 'react';
+import React from 'react';
 import { Weekday } from "/imports/ui/components/weeklySpread/Weekday.jsx"
 import { dayArray, monthArray, getOffsetDate } from '/imports/ui/util/commonUtils.js'
 
 const today = new Date();
 //const today = new Date(new Date().setDate(new Date().getDate() - 14)); // for testing
 
+/* 
+/ gets the label for the week
+/ if the entire week is in one month, formats as "Month dd - dd"
+/ if week lands in two months, formats as "Month dd - Month dd"
+*/
 const getWeekLabel = () => {
     let day1 = getOffsetDate(today, dayArray[0]),
         day7 = getOffsetDate(today, dayArray[6]),
@@ -26,7 +30,9 @@ export const Week = () => {
         <div>
             <ul id="week" className="week-container p-0">
                 <li className="weekday-block m-8 p-16">
-                    <div>{ <h1 id="week-label" className="header">{ getWeekLabel() }</h1>}</div>
+                    <div>
+                        <h1 id="week-label" className="header">{ getWeekLabel() }</h1>
+                    </div>
                 </li>
 
                 { dayArray.map(weekday => <Weekday 

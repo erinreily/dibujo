@@ -1,30 +1,38 @@
 import React, { useState, Fragment } from 'react';
 import { useTracker } from 'meteor/react-meteor-data';
 import { TasksCollection } from '/imports/db/TasksCollection';
-import { TaskForm } from '/imports/ui/components/common/TaskForm.jsx';
-import { Task } from '/imports/ui/components/common/Task.jsx';
 import { EventsCollection } from '/imports/db/EventsCollection';
-import { EventForm } from '/imports/ui/components/common/EventForm.jsx';
-import { Event } from '/imports/ui/components/common/Event.jsx';
+import { TaskEvent } from '/imports/ui/components/common/TaskEvent.jsx';
+import { TaskEventForm } from '/imports/ui/components/common/TaskEventForm.jsx';
 import { formatDate } from '/imports/ui/util/commonUtils.js'
+import { formatDatePretty } from '../../util/commonUtils';
 
 const toggleChecked = ({ _id, isChecked }) => {
     Meteor.call('tasks.setIsChecked', _id, !isChecked);
+};
+
+const openDialog = (dialogId) => {
+    let dialog = document.getElementById(dialogId);
+    dialog.showModal();
+};
+const closeDialog = (dialogId) => {
+    let dialog = document.getElementById(dialogId);
+    dialog.close();
 }
 
 const deleteTask = ({ _id }) => Meteor.call('tasks.remove', _id);
 const deleteEvent = ({ _id }) => Meteor.call('events.remove', _id);
 
 export const Weekday = ({ day, date }) => {
+    const taskDialogId = "dialog-task-" + formatDate(date);
+    const eventDialogId = "dialog-event-" + formatDate(date);
+
     const user = useTracker(() => Meteor.user());
-    const [hideCompleted, setHideCompleted] = useState(false);
     const [showTaskForm, setShowTaskForm] = useState(false);
     const [showEventForm, setShowEventForm] = useState(false);
-    const hideCompletedFilter = { isChecked: { $ne: true } };
     const userFilter = user ? { userId: user._id } : {};
     const dateFilter = { date: formatDate(date) };
     const userDateFilter = {...userFilter, ...dateFilter};
-    const pendingOnlyFilter = { ...hideCompletedFilter, ...userFilter, ...dateFilter };
   
     const { tasks, isLoading } = useTracker(() => {
       const noDataAvailable = { tasks: []};
@@ -38,7 +46,7 @@ export const Weekday = ({ day, date }) => {
       }
   
       const tasks = TasksCollection.find(
-        hideCompleted ? pendingOnlyFilter : userDateFilter, {
+        userDateFilter, {
           sort: {createdAt: 1}
         }
       ).fetch();
@@ -68,53 +76,72 @@ export const Weekday = ({ day, date }) => {
     return (
         <li className="weekday-block m-8 p-16">
             <div>
-                <h2 className="header mt-0 mb-8">{ day } / { date.getDate() } { formatDate(date) === formatDate(new Date()) ? (<span>⭐</span>) : (<span></span>) }</h2>
-                {/* <div className="filter">
-                    <button onClick={() => setHideCompleted(!hideCompleted)}>
-                    {hideCompleted ? 'Show All' : 'Hide Completed'}
-                    </button>
-                </div> */}
+                <h2 className="header mt-0 mb-8">{ day } / { date.getDate() } { formatDate(date) === formatDate(new Date()) && (<span>⭐</span>) }</h2>
 
-                <div class="tasks">
-                    {isLoading && <div className="loading">loading...</div>}
+                <div className="tasks">
+                    { isLoading && <div className="loading">loading...</div> }
                     
                     <div className="week-items-container mb-16">
-                        <h3 className="header m-0">To Do</h3>
-                        <button onClick={() => setShowTaskForm(!showTaskForm)} className="addTask icon mt-0 mb-0 ml-16 p-8">
-                            <img className={ showTaskForm ? 'cancel' : 'add'} alt={ showTaskForm ? "Cancel add task" : "Add task" } src="/images/icons/close_black_24dp.svg" />
-                        </button>
-                        { showTaskForm ? (
-                            <TaskForm setShowTaskForm={ setShowTaskForm } date={ formatDate(date) } />
-                        ) : (<div></div>)}
+                        <div className="container">
+                            <div className="row">
+                                <div className="col-sm-1 col-xs-1">
+                                    <h3 className="header m-0">To Do</h3>
+                                </div>
+                                <div className="col-sm-1 col-xs-1">
+                                    <button onClick={ () => openDialog(taskDialogId) } className="addTask icon mt-0 mb-0 ml-16 p-8">
+                                        <img className="add" alt="Add task" src="/images/icons/close_black_24dp.svg" />
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <TaskEventForm 
+                            type="task" 
+                            closeDialog={ closeDialog } 
+                            date={ formatDate(date) } 
+                            prettyDate={ formatDatePretty(date) } 
+                        />
                     </div>
                     <ul className="p-0 pl-16">
-                        { tasks.map(task => <Task 
-                        key={ task._id } 
-                        task={ task } 
-                        onCheckboxClick={ toggleChecked }
-                        onDeleteClick={ deleteTask }
+                        { tasks.map(task => <TaskEvent 
+                            key={ task._id }
+                            type="task"
+                            item={ task } 
+                            onCheckboxClick={ toggleChecked }
+                            onDeleteClick={ deleteTask }
                         />) }
                     </ul>
                 </div>
                 
-                <div class="events">
+                <div className="events">
                     {isLoadingEvents && <div className="loading">loading...</div>}
 
                     <div className="week-items-container mb-16">
-                        <h3 className="header m-0">Events</h3>
-                        <button onClick={() => setShowEventForm(!showEventForm)} className="addEvent icon mt-0 mb-0 ml-16 p-8">
-                            <img className={ showEventForm ? 'cancel' : 'add'} alt={ showEventForm ? "Cancel add task" : "Add task" } src="/images/icons/close_black_24dp.svg" />
-                        </button>
-                        { showEventForm ? (
-                            <EventForm setShowEventForm={ setShowEventForm } date={ formatDate(date) } />
-                        ) : (<div></div>)}
+                        <div className="container">
+                            <div className="row">
+                                <div className="col-sm-1 col-xs-1">
+                                    <h3 className="header m-0">Events</h3>
+                                </div>
+                                <div className="col-sm-1 col-xs-1">
+                                    <button onClick={ () => openDialog(eventDialogId) } className="addEvent icon mt-0 mb-0 ml-16 p-8">
+                                        <img className="add" alt="Add event" src="/images/icons/close_black_24dp.svg" />
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <TaskEventForm 
+                            type="event" 
+                            closeDialog={ closeDialog } 
+                            date={ formatDate(date) } 
+                            prettyDate={ formatDatePretty(date) } 
+                        />
                     </div>
 
                     <ul className="p-0 pl-16">
-                        { events.map(event => <Event 
-                        key={ event._id } 
-                        event={ event } 
-                        onDeleteClick={ deleteEvent }
+                        { events.map(event => <TaskEvent 
+                            key={ event._id }
+                            type="event"
+                            item={ event } 
+                            onDeleteClick={ deleteEvent }
                         />) }
                     </ul>
                 </div>

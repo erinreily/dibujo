@@ -7,23 +7,22 @@ import { Navbar } from './components/common/Navbar.jsx';
 
 export const App = () => {
 
-  const logout = () => Meteor.logout();
   const user = useTracker(() => Meteor.user());
 
   return (
     <main>
       <div className="app">
-        <Navbar user={user} />
+        <Navbar user={ user } />
 
         <div className="main">
 
-          {user ? (
-          <Fragment>
-            <Week />
-          </Fragment>
-          ) : (
+          { user ? (
+            <Fragment>
+                <Week />
+            </Fragment>
+            ) : (
             <LoginForm />
-          )}
+          ) }
 
         </div>
       </div>

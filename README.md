@@ -1,14 +1,21 @@
 Dibujo (DIgital BUllet JOurnal)
 By Erin Dunnahoo
 
-Coffee Image by <a href="https://pixabay.com/users/6689062-6689062/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=2847042">David Schwarzenberg</a> from <a href="https://pixabay.com/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=2847042">Pixabay</a>
+THE ELEVATOR PITCH:
+Dibujo is a digital bullet journal for organization on the go. Simply pull up the website on your desktop or mobile browser, log in, and navigate to the weekly or monthly spreads. Add tasks and check them off as you complete them. Add events so you know what's happening on each day. Planned future updates will add features such as statistics, an index for quick navigation to specific weeks or months, carrying tasks forward to the next day, and various personalization options.
 
-Bullet Journal Image by <a href="https://pixabay.com/users/stocksnap-894430/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=2562345">StockSnap</a> from <a href="https://pixabay.com/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=2562345">Pixabay</a>
+THE TECHNOLOGIES:
+Meteor + React for JavaScript frameworks
+MongoDB for back end
+Less for styling
+Github & git for version control
+Mocha/Chai for unit testing
+aXe for basic accessibility checks
 
-For less mixin - https://github.com/kolosovsky/kolos.mixins/blob/master/for.less/
 
-
-Release plan:
+**********************************
+Release plan
+**********************************
 v1.0.0
 Current weekly spread only
     To do -
@@ -38,3 +45,17 @@ Future improvements
     Font/color personalization (themes?)
     Stickers
     Other personalizations - e.g. Mon-Sun vs Sun-Sat weekly spread
+
+
+**********************************
+Resources Used
+**********************************
+Coffee Image by <a href="https://pixabay.com/users/6689062-6689062/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=2847042">David Schwarzenberg</a> from <a href="https://pixabay.com/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=2847042">Pixabay</a>
+
+Bullet Journal Image by <a href="https://pixabay.com/users/stocksnap-894430/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=2562345">StockSnap</a> from <a href="https://pixabay.com/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=2562345">Pixabay</a>
+
+https://pixabay.com/photos/business-computer-mobile-smartphone-2846221/
+
+For less mixin - https://github.com/kolosovsky/kolos.mixins/blob/master/for.less/
+
+Dialog polyfill - https://github.com/GoogleChrome/dialog-polyfill

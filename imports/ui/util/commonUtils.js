@@ -18,6 +18,11 @@ export const formatDate = (date) => {
     return month + day + year;
 };
 
+// format date in Month dd
+export const formatDatePretty = (date) => {
+    return monthArray[date.getMonth()] + " " + date.getDate();
+};
+
 // get Date for a day of the week relative to the passed Date
 export const getOffsetDate = (relativeDate, weekday) => {
     let offsetDate = new Date(relativeDate.getTime()),

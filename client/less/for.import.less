@@ -3,6 +3,7 @@
         .loop(@i:1) when (@i =< length(@list)) {
             @value: extract(@list, @i);
             @rem: @value/16;
+            @percentage: @value*100/8;
 
             @code();
 

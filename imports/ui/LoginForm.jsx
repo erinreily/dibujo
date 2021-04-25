@@ -12,8 +12,8 @@ export const LoginForm = () => {
     };
 
     return (
-        <form onSubmit={submit} className="login-form">
-            <div>
+        <form onSubmit={ submit } className="login-form m-16">
+            <div className="mb-16">
                 <label htmlFor="username">Username</label>
                 
                 <input 
@@ -21,7 +21,7 @@ export const LoginForm = () => {
                     placeholder="Username"
                     name="username"
                     required
-                    onChange={e => setUsername(e.target.value)}
+                    onChange={ e => setUsername(e.target.value) }
                 />
             </div>
 
@@ -33,7 +33,7 @@ export const LoginForm = () => {
                     placeholder="Password"
                     name="password"
                     required
-                    onChange={e => setPassword(e.target.value)}
+                    onChange={ e => setPassword(e.target.value) }
                 />
             </div>
 
