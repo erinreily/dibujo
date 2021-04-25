@@ -1,6 +1,9 @@
 Dibujo (DIgital BUllet JOurnal)
 By Erin Dunnahoo
 
+LIVE ON HEROKU: https://dibujo-dev.herokuapp.com/
+Test username/password - admin/admin
+
 THE ELEVATOR PITCH:
 Dibujo is a digital bullet journal for organization on the go. Simply pull up the website on your desktop or mobile browser, log in, and navigate to the weekly or monthly spreads. Add tasks and check them off as you complete them. Add events so you know what's happening on each day. Planned future updates will add features such as statistics, an index for quick navigation to specific weeks or months, carrying tasks forward to the next day, and various personalization options.
 
