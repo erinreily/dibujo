@@ -1,0 +1,41 @@
+@import "variables.import.less";
+@import "for.import.less";
+
+// width based on number of columns out of 8
+@columns: 1, 2, 3, 4, 5, 6, 7, 8;
+
+.for(@columns, {
+    @media @screen-xs {
+        .col-xs-@{value} {
+            position: relative;
+            margin-left: 1rem;
+            padding-right: 1rem;
+            float: left;
+            width: ~"@{percentage}%";
+            box-sizing: border-box;
+        }
+    }
+
+    @media @screen-sm {
+        .col-sm-@{value} {
+            position: relative;
+            padding-left: 1rem;
+            padding-right: 1rem;
+            float: left;
+            width: ~"@{percentage}%";
+            box-sizing: border-box;
+        }
+    }
+});
+
+.container {
+    width: 100%;
+    display:table;
+}
+
+.row {
+    margin-left: -12px;
+    margin-right: -12px;
+    display:table;
+    width:100%;
+}
