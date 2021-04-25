@@ -6,12 +6,12 @@ Dibujo is a digital bullet journal for organization on the go. Simply pull up th
 
 THE TECHNOLOGIES:
 Meteor + React for JavaScript frameworks
-MongoDB for back end
+MongoDB provided by AtlasDB running on GCS for back end
 Less for styling
 Github & git for version control
 Mocha/Chai for unit testing
 aXe for basic accessibility checks
-
+Deployed using Heroku git integration
 
 **********************************
 Release plan
