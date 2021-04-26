@@ -1,31 +1,14 @@
 import { Meteor } from 'meteor/meteor';
-import React, { useState, Fragment } from 'react';
+import React from 'react';
 import { useTracker } from 'meteor/react-meteor-data';
-import { LoginForm } from './LoginForm';
-import { Week } from './components/weeklySpread/Week.jsx';
-import { Navbar } from './components/common/Navbar.jsx';
+import { Header } from './components/Header.jsx';
+import { Main } from './components/Main.jsx';
 
 export const App = () => {
-
-  const user = useTracker(() => Meteor.user());
-
   return (
-    <main>
-      <div className="app">
-        <Navbar user={ user } />
-
-        <div className="main">
-
-          { user ? (
-            <Fragment>
-                <Week />
-            </Fragment>
-            ) : (
-            <LoginForm />
-          ) }
-
-        </div>
-      </div>
-    </main>
+    <div>
+      <Header />
+      <Main />
+    </div>
   );
 };
