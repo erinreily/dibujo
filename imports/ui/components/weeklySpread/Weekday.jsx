@@ -78,18 +78,18 @@ export const Weekday = ({ day, date }) => {
             <div>
                 <h2 className="header mt-0 mb-8">{ day } / { date.getDate() } { formatDate(date) === formatDate(new Date()) && (<span>⭐</span>) }</h2>
 
-                <div className="tasks">
+                <div className="tasks mb-16">
                     { isLoading && <div className="loading">loading...</div> }
                     
-                    <div className="week-items-container mb-16">
+                    <div className="week-items-container">
                         <div className="container">
                             <div className="row">
                                 <div className="col-sm-1 col-xs-1">
                                     <h3 className="header m-0">To Do</h3>
                                 </div>
                                 <div className="col-sm-1 col-xs-1">
-                                    <button onClick={ () => openDialog(taskDialogId) } className="addTask icon mt-0 mb-0 ml-16 p-8">
-                                        <img className="add" alt="Add task" src="/images/icons/close_black_24dp.svg" />
+                                    <button onClick={ () => openDialog(taskDialogId) } className="addTask icon icon-only mt-0 mb-0 ml-16 pt-4 pb-4 pl-0 pr-0">
+                                        <img className="add" alt="Add task" src="/images/icons/add_circle_outline_black_24dp.svg" />
                                     </button>
                                 </div>
                             </div>
@@ -112,18 +112,18 @@ export const Weekday = ({ day, date }) => {
                     </ul>
                 </div>
                 
-                <div className="events">
+                <div className="events mb-16">
                     {isLoadingEvents && <div className="loading">loading...</div>}
 
-                    <div className="week-items-container mb-16">
+                    <div className="week-items-container">
                         <div className="container">
                             <div className="row">
                                 <div className="col-sm-1 col-xs-1">
                                     <h3 className="header m-0">Events</h3>
                                 </div>
                                 <div className="col-sm-1 col-xs-1">
-                                    <button onClick={ () => openDialog(eventDialogId) } className="addEvent icon mt-0 mb-0 ml-16 p-8">
-                                        <img className="add" alt="Add event" src="/images/icons/close_black_24dp.svg" />
+                                    <button onClick={ () => openDialog(eventDialogId) } className="addEvent icon icon-only mt-0 mb-0 ml-16 pt-4 pb-4 pl-0 pr-0">
+                                        <img className="add" alt="Add event" src="/images/icons/add_circle_outline_black_24dp.svg" />
                                     </button>
                                 </div>
                             </div>

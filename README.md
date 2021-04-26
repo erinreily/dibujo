@@ -24,7 +24,7 @@ Current weekly spread only
 v1.1.0 - RELEASED
 Add create account functionality
 
-v1.2.0
+v1.2.0 - RELEASED
 Update styles and add hamburger menu
 
 v2.0.0
@@ -37,7 +37,7 @@ Add monthly spread
         Add monthly goals
         Associate month events with weekday events
         Arrows to move through past and future months
-        Add menu to switch between weekly and monthly spreads
+        Add menu options to switch between weekly and monthly spreads
 
 Future improvements
     Index - list of links to go immediately to a weekly or monthly spread
@@ -56,6 +56,10 @@ Resources Used
 Coffee Image by <a href="https://pixabay.com/users/6689062-6689062/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=2847042">David Schwarzenberg</a> from <a href="https://pixabay.com/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=2847042">Pixabay</a>
 
 Bullet Journal Image by <a href="https://pixabay.com/users/stocksnap-894430/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=2562345">StockSnap</a> from <a href="https://pixabay.com/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=2562345">Pixabay</a>
+
+Coffee 2 Image by <a href="https://pixabay.com/users/engin_akyurt-3656355/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=2242213">Engin Akyurt</a> from <a href="https://pixabay.com/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=2242213">Pixabay</a>
+
+Coffe beans Image by <a href="https://pixabay.com/users/nickype-10327513/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=5447420">NickyPe</a> from <a href="https://pixabay.com/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=5447420">Pixabay</a>
 
 https://pixabay.com/photos/business-computer-mobile-smartphone-2846221/
 

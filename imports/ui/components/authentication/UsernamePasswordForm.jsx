@@ -12,7 +12,7 @@ export const UsernamePasswordForm = ({ type, submitAction, buttonText }) => {
     };
 
     return (
-        <form onSubmit={ submit } className="login-form m-16">
+        <form onSubmit={ submit } className="authentication-form m-16">
             <div className="mb-16">
                 <label htmlFor="username">Username</label> <br></br>
                 
