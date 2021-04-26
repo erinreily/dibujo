@@ -1,5 +1,6 @@
 {
   "name": "dibujo",
+  "version": "1.1.0",
   "private": true,
   "scripts": {
     "start": "meteor run",
@@ -13,7 +14,8 @@
     "dialog-polyfill": "^0.5.6",
     "meteor-node-stubs": "^1.0.3",
     "react": "^16.14.0",
-    "react-dom": "^16.14.0"
+    "react-dom": "^16.14.0",
+    "react-router-dom": "^5.2.0"
   },
   "meteor": {
     "mainModule": {
