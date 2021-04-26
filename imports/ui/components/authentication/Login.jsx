@@ -14,7 +14,7 @@ export const Login = () => {
     };
 
     return (
-        <div>
+        <div className="pl-16 pt-2 pb-16">
             <h1>Log in</h1>
             <UsernamePasswordForm submitAction={ submitAction } type="login" buttonText="Log in" />
             { redirect && (
