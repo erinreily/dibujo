@@ -1,11 +1,11 @@
 {
   "name": "dibujo",
-  "version": "1.2.0",
+  "version": "2.0.0",
   "private": true,
   "scripts": {
     "start": "meteor run",
     "test": "meteor test --once --driver-package meteortesting:mocha",
-    "test-app": "TEST_WATCH=1 meteor test --full-app --driver-package meteortesting:mocha",
+    "test-app": "meteor test --driver-package meteortesting:mocha --port 9000",
     "visualize": "meteor --production --extra-packages bundle-visualizer"
   },
   "dependencies": {

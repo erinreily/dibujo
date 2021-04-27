@@ -76,8 +76,8 @@ export const Weekday = ({ day, date }) => {
     return (
         <li className="weekday-block m-8 p-16">
             <div>
-                <h2 className="header mt-0 mb-8">{ day } / { date.getDate() } { formatDate(date) === formatDate(new Date()) && (<span>⭐</span>) }</h2>
-
+                <h2 className="header mt-0 mb-8">{ day } / { date.getDate() } { formatDate(date) === formatDate(new Date()) && (<img alt="Today" src="/images/icons/star_rate_black_24dp.svg" />) }</h2>
+                <hr></hr>
                 <div className="tasks mb-16">
                     { isLoading && <div className="loading">loading...</div> }
                     

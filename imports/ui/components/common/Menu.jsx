@@ -5,7 +5,7 @@ import { Week } from "/imports/ui/components/weeklySpread/Week.jsx"
 export const Menu = ({ logout, enabledFeatures, name }) => {
     
     return (
-        <div id="menu">
+        <div id="menu" className="p-16 pb-64">
             <Switch>
                 <Route path='/dashboard' component={ Week }/>
                 <Route path='/journalindex' component={ Week }/>
@@ -15,40 +15,66 @@ export const Menu = ({ logout, enabledFeatures, name }) => {
                 <Route path='/archives' component={ Week }/>
             </Switch>
 
-            <p className="pl-32 ml-16">Welcome{ name }!</p>
             <ul className="p-0 m-0">
                 { enabledFeatures.dashboard && (
-                    <li>
-                        <Link to="/dashboard"><img className="mr-32" src="/images/icons/dashboard_white_24dp.svg"/>Dashboard</Link>
+                    <li className="container">
+                        <Link to="/dashboard">
+                            <div className="button-style p-4 pl-16 mr-0 mt-8 mb-8">Dashboard
+                                <img className="ml-32  mt-4 mr-8" src="/images/icons/dashboard_black_24dp.svg"/>
+                            </div>
+                        </Link>
                     </li>
                 )}
                 { enabledFeatures.index && (
-                    <li>
-                        <Link to="/journalindex"><img className="mr-32" src="/images/icons/format_list_numbered_white_24dp.svg"/>Index</Link>  
+                    <li className="container">
+                        <Link to="/journalindex">
+                            <div className="button-style p-4 pl-16 mr-0 mt-8 mb-8">Index
+                                <img className="ml-32  mt-4 mr-8" src="/images/icons/format_list_numbered_black_24dp.svg"/>
+                            </div>
+                        </Link>
                     </li>
                 )}
                 { enabledFeatures.weeklySpread && (
-                    <li>
-                        <Link to="/weeklyspread"><img className="mr-32" src="/images/icons/calendar_view_month_white_24dp.svg"/>Weekly spread</Link>   
+                    <li className="container">
+                        <Link to="/weeklyspread">
+                            <div className="button-style p-4 pl-16 mr-0 mt-8 mb-8">Weekly spread
+                                <img className="ml-32  mt-4 mr-8" src="/images/icons/calendar_view_month_black_24dp.svg"/>
+                            </div>
+                        </Link>
                     </li>
                 )}
                 { enabledFeatures.monthlySpread && (
-                    <li>
-                        <Link to="/monthlyspread"><img className="mr-32" src="/images/icons/event_white_24dp.svg"/>Monthly spread</Link> 
+                    <li className="container">
+                        <Link to="/monthlyspread">
+                            <div className="button-style p-4 pl-16 mr-0 mt-8 mb-8">Monthly spread
+                                <img className="ml-32  mt-4 mr-8" src="/images/icons/event_black_24dp.svg"/>
+                            </div>
+                        </Link>
                     </li>
                 )}
                 { enabledFeatures.statistics && (
-                    <li>
-                        <Link to="/statistics"><img className="mr-32" src="/images/icons/insights_white_24dp.svg"/>Statistics</Link>  
+                    <li className="container">
+                        <Link to="/statistics">
+                            <div className="button-style p-4 pl-16 mr-0 mt-8 mb-8">Statistics
+                                <img className="ml-32  mt-4 mr-8" src="/images/icons/insights_black_24dp.svg"/>
+                            </div>
+                        </Link>
                     </li>
                 )}
                 { enabledFeatures.archives && (
-                    <li>
-                        <Link to="/archives"><img className="mr-32" src="/images/icons/archive_white_24dp.svg"/>Archives</Link>   
+                    <li className="container">
+                        <Link to="/archives">
+                            <div className="button-style p-4 pl-16 mr-0 mt-8 mb-8">Archives
+                                <img className="ml-32  mt-4 mr-8" src="/images/icons/archive_black_24dp.svg"/>
+                            </div>
+                        </Link>
                     </li>
                 )}
-                <li role="button" onClick={ logout }>
-                    <a href="#"><img className="mr-32" src="/images/icons/logout_white_24dp.svg"/>Log out</a>
+                { enabledFeatures.dashboard || enabledFeatures.index || enabledFeatures.weeklySpread || enabledFeatures.monthlySpread || enabledFeatures.statistics || enabledFeatures.archives && <hr></hr>}
+                <li className="container">
+                    <button className="button-style p-4 pl-16 mr-0 mt-8 mb-8" onClick={ logout }>
+                        Log out <img className="ml-32 mt-4 mr-8" src="/images/icons/logout_black_24dp.svg"/>
+                    </button>
                 </li>
             </ul>
         </div>

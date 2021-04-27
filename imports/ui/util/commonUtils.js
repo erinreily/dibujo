@@ -24,9 +24,15 @@ export const formatDatePretty = (date) => {
 };
 
 // get Date for a day of the week relative to the passed Date
-export const getOffsetDate = (relativeDate, weekday) => {
+export const getOffsetDateFromWeekday = (relativeDate, weekday) => {
     let offsetDate = new Date(relativeDate.getTime()),
         offset = dayArray.indexOf(weekday) - relativeDate.getDay();
+    return getOffsetDate(relativeDate, offset);
+}
+
+// get new Date offset a number of days from the passed Date
+export const getOffsetDate = (relativeDate, offset) => {
+    let offsetDate = new Date(relativeDate.getTime());
     offsetDate.setDate(offsetDate.getDate() + offset);
     return offsetDate;
 }
