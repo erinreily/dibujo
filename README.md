@@ -27,8 +27,8 @@ Add create account functionality
 v1.2.0 - RELEASED
 Update styles and add hamburger menu
 
-v2.0.0
-Add arrows to move through past and future weeks (limit?)
+v2.0.0 - RELEASED
+Add arrows to move through past and future weeks
 
 v3.0.0
 Add monthly spread
@@ -68,3 +68,5 @@ For less mixin - https://github.com/kolosovsky/kolos.mixins/blob/master/for.less
 Dialog polyfill - https://github.com/GoogleChrome/dialog-polyfill
 
 React Router - https://github.com/ReactTraining/react-router
+
+Hamburger icon animation - https://codepen.io/designcouch/pen/Atyop
