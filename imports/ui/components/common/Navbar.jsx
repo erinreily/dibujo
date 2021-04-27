@@ -16,7 +16,7 @@ export const Navbar = ({ user }) => {
         statistics: false,
         archives: false
     };
-    //for testing features
+    // //for testing features
     // const enabledFeatures = {
     //     dashboard: true,
     //     index: true,
@@ -31,11 +31,31 @@ export const Navbar = ({ user }) => {
             <div className="navbar flex-container m-0">
                 <div className="navbar-header header p-8">Digital Bullet Journal</div>
                 { user && (
-                    <div className="navbar-buttons">
-                        <button className="navbar-button round-icon p-8" onClick={ () => setShowMenu(!showMenu) }>
-                            <img alt="Menu" src="/images/icons/menu_black_24dp.svg" />
-                        </button>
-                    </div>
+                    <Fragment>
+                        <div className="container">
+                            <div className="flex-container">
+                                <p className="welcome-message p-8 mb-0 mt-4">Welcome{ name }!</p>
+                            </div>
+                        </div>
+                        <div className="navbar-buttons">
+                            
+                            <button className="navbar-button round-icon p-8" onClick={ () => setShowMenu(!showMenu) }>
+                                { showMenu ? (
+                                    <div className="menu-icon open">
+                                        <span></span>
+                                        <span></span>
+                                        <span></span>
+                                    </div>
+                                ) : (
+                                    <div className="menu-icon">
+                                        <span></span>
+                                        <span></span>
+                                        <span></span>
+                                    </div>
+                                )}  
+                            </button>
+                        </div>
+                    </Fragment>
                 )}
             </div>
             { user && showMenu &&

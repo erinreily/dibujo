@@ -21,7 +21,6 @@ a, p {
 .navbar {
     background-image: url('/images/coffee.jpg');
     background-size: cover;
-    justify-content: space-between;
     height:10rem;
     align-content:center;
 
@@ -41,18 +40,21 @@ a, p {
         }
     }
 
-    .navbar-buttons {
-        color:white;
+    .welcome-message {
+        background-color: white;
+        border-radius: 1rem;
     }
 }
 
 #menu {
     position:absolute;
-    background-image: url('/images/coffee-beans3.jpg');
+    background-color: @wood;
+    border-bottom-left-radius: 30rem;
+    box-shadow: 1px 2px 4px #888888;
     background-size: cover;
     top:10rem;
     right:0;
-    color: @paper;
+    color: black;
     width:20rem;
     height:auto;
     transition: transform 0.3s ease-in-out;
@@ -61,20 +63,36 @@ a, p {
         width:100%;
     }
 
-    a, p {
-        color:@paper;
+    a, div {
+        color:black;
         text-decoration: none;
         font-size: 2rem;
     }
-    
-    li {
-        width: 100%;
-        padding: 8px;
+
+    .button-style {
+        background-color: @paper;
+        border-radius: 2rem;
+        box-shadow: 1px 2px 4px #888888;
+        float:right;
+        border:none;
+        top:7.5rem;
+        right:0rem;
+        z-index: 10;
+        transform-origin: right;
+        font-size:1.5rem;
+        transition: background 250ms ease-in-out, 
+                transform 150ms ease;
+
+
     }
 
-    li:hover {
-        background-color: @black-coffee;
-        cursor: pointer;
+    div:hover {
+        transform: scale(1.1);
+    }
+
+    hr {
+        width: 60%;
+        float:right;
     }
 }
 
@@ -116,6 +134,89 @@ button {
         right:0rem;
         z-index: 10;
     }
+
+    .menu-icon {
+        width: 1.5rem;
+        height: 1.5rem;
+        position: relative;
+        -webkit-transform: rotate(0deg);
+        -moz-transform: rotate(0deg);
+        -o-transform: rotate(0deg);
+        transform: rotate(0deg);
+        -webkit-transition: .5s ease-in-out;
+        -moz-transition: .5s ease-in-out;
+        -o-transition: .5s ease-in-out;
+        transition: .5s ease-in-out;
+        cursor: pointer;
+
+        span {
+            display: block;
+            position: absolute;
+            height: 3px;
+            width: 100%;
+            background: #3b3b3b;
+            border-radius: 9px;
+            opacity: 1;
+            left: 0;
+            -webkit-transform: rotate(0deg);
+            -moz-transform: rotate(0deg);
+            -o-transform: rotate(0deg);
+            transform: rotate(0deg);
+            -webkit-transition: .25s ease-in-out;
+            -moz-transition: .25s ease-in-out;
+            -o-transition: .25s ease-in-out;
+            transition: .25s ease-in-out;
+        }
+
+          span:nth-child(1) {
+            top: 0.25rem;
+            -webkit-transform-origin: left center;
+            -moz-transform-origin: left center;
+            -o-transform-origin: left center;
+            transform-origin: left center;
+        }
+
+          span:nth-child(2) {
+            top: 0.6875rem;
+            -webkit-transform-origin: left center;
+            -moz-transform-origin: left center;
+            -o-transform-origin: left center;
+            transform-origin: left center;
+        }
+
+          span:nth-child(3) {
+            top: 1.125rem;
+            -webkit-transform-origin: left center;
+            -moz-transform-origin: left center;
+            -o-transform-origin: left center;
+            transform-origin: left center;
+        }
+
+        &.open {
+            span:nth-child(1) {
+                -webkit-transform: rotate(45deg);
+                -moz-transform: rotate(45deg);
+                -o-transform: rotate(45deg);
+                transform: rotate(45deg);
+                top: 3px;
+                left: 4px;
+            }
+    
+            span:nth-child(2) {
+                width: 0%;
+                opacity: 0;
+            }
+    
+            span:nth-child(3) {
+                -webkit-transform: rotate(-45deg);
+                -moz-transform: rotate(-45deg);
+                -o-transform: rotate(-45deg);
+                transform: rotate(-45deg);
+                top: 20px;
+                left: 4px;
+            }
+        }
+    }
 }
 
 button:hover,
@@ -154,6 +255,7 @@ li {
 .flex-container {
     display: flex;
     flex-wrap: wrap;
+    justify-content: space-evenly;
 }
 
 .authentication-panel {
@@ -184,7 +286,6 @@ li {
 // weekly spread
 .week-container {
     .flex-container;
-    justify-content: space-evenly;
 
     .weekday-block {
         .panel;
@@ -192,7 +293,6 @@ li {
     
         h2 {
             text-align: right;
-            border-bottom: 1px solid black;
         }
     
         h3 {

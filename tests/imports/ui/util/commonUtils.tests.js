@@ -1,7 +1,7 @@
 import { Meteor } from 'meteor/meteor';
 import { assert } from 'chai';
 import { sinon } from 'meteor/practicalmeteor:sinon';
-import { formatDate, formatDatePretty, getOffsetDate } from '/imports/ui/util/commonUtils.js';
+import { formatDate, formatDatePretty, getOffsetDateFromWeekday, getOffsetDate } from '/imports/ui/util/commonUtils.js';
 
 if (Meteor.isServer) {
   describe('Events', () => {
@@ -25,6 +25,28 @@ if (Meteor.isServer) {
         });
 
         describe('getOffsetDate function', () => {
+            it('should return date positively offset a number of days from the given date', () => {
+                const relativeDate = new Date(2021, 3, 27);
+                const expectedDate = new Date(2021, 4, 4);
+
+                const offsetDate = getOffsetDate(relativeDate, 7);
+                assert.equal(offsetDate.getMonth(), expectedDate.getMonth());
+                assert.equal(offsetDate.getDate(), expectedDate.getDate());
+                assert.equal(offsetDate.getYear(), expectedDate.getYear());
+            });
+
+            it('should return date negatively offset a number of days from the given date', () => {
+                const relativeDate = new Date(2021, 3, 27);
+                const expectedDate = new Date(2021, 3, 20);
+
+                const offsetDate = getOffsetDate(relativeDate, -7);
+                assert.equal(offsetDate.getMonth(), expectedDate.getMonth());
+                assert.equal(offsetDate.getDate(), expectedDate.getDate());
+                assert.equal(offsetDate.getYear(), expectedDate.getYear());
+            });
+        });
+
+        describe('getOffsetDateFromWeekday function', () => {
 
             const weekdays = [{
                 day: 'Sunday',
@@ -68,7 +90,7 @@ if (Meteor.isServer) {
                     const relativeDate = new Date(2021, 3, 22); //thursday
                     const expectedDate = new Date(2021, 3, weekday.date1);
     
-                    const offsetDate = getOffsetDate(relativeDate, weekday.day);
+                    const offsetDate = getOffsetDateFromWeekday(relativeDate, weekday.day);
                     assert.equal(offsetDate.getMonth(), expectedDate.getMonth());
                     assert.equal(offsetDate.getDate(), expectedDate.getDate());
                     assert.equal(offsetDate.getYear(), expectedDate.getYear());
@@ -78,7 +100,7 @@ if (Meteor.isServer) {
                     const relativeDate = new Date(2021, 3, 27); //thursday
                     const expectedDate = new Date(2021, weekday.month, weekday.date2);
     
-                    const offsetDate = getOffsetDate(relativeDate, weekday.day);
+                    const offsetDate = getOffsetDateFromWeekday(relativeDate, weekday.day);
                     assert.equal(offsetDate.getMonth(), expectedDate.getMonth());
                     assert.equal(offsetDate.getDate(), expectedDate.getDate());
                     assert.equal(offsetDate.getYear(), expectedDate.getYear());
