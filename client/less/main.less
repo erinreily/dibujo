@@ -18,15 +18,30 @@ a, p {
     font-size: 1.5rem;
 }
 
+label, span {
+    font-family: @handwriting;
+    font-size: 1.5rem;
+}
+
+li {
+    list-style-type: none;
+}
+
+.text-input {
+    vertical-align: middle;
+    margin: 5px 10px 5px 0;
+    padding: 10px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    min-width: 0;
+    margin-right:0;
+}
+
 .navbar {
     background-image: url('/images/coffee.jpg');
     background-size: cover;
     height:10rem;
     align-content:center;
-
-    @media @screen-xs {
-        background-size:cover;
-    }
 
     .navbar-header {
         font-size: 3rem;
@@ -51,13 +66,11 @@ a, p {
     background-color: @wood;
     border-bottom-left-radius: 30rem;
     box-shadow: 1px 2px 4px #888888;
-    background-size: cover;
     top:10rem;
     right:0;
-    color: black;
     width:20rem;
-    height:auto;
     transition: transform 0.3s ease-in-out;
+    z-index: 1;
 
     @media @screen-xs {
         width:100%;
@@ -82,8 +95,6 @@ a, p {
         font-size:1.5rem;
         transition: background 250ms ease-in-out, 
                 transform 150ms ease;
-
-
     }
 
     div:hover {
@@ -97,13 +108,11 @@ a, p {
 }
 
 button {
+    background-color: @paper;
     display: inline-block;
-    border: 1px solid black;
     padding: 0.5rem 1rem;
     margin: 1rem;
     text-decoration: none;
-    color: @black;
-    background: none;
     font-size: 1.5rem;
     font-family: @handwriting;
     cursor: pointer;
@@ -112,27 +121,45 @@ button {
                 transform 150ms ease;
     -webkit-appearance: none;
     -moz-appearance: none;
+    border: none;
+    box-shadow: 1px 2px 4px #888888;
+    border-radius: 2rem;
+    transform-origin: center;
 
-    &.cancel-button {
-        float:right;
+    &:hover, &:focus {
+        transform: scale(1.1);
+        img {
+            transform: scale(1.1);
+            transform-origin: center;
+            transition: background 250ms ease-in-out, 
+                transform 150ms ease;
+        }
+    }
+
+    &:focus {
+        outline: 1px solid #98989c;
+        outline-offset: -4px; 
+    }
+
+    &:active {
+        transform: scale(0.99);
     }
 
     &.icon-only {
         display: inline-block;
-        border: none;
-        background: none;
+        box-shadow: none;
     }
 
-    &.round-icon {
-        background-color: @paper;
-        border-radius: 2rem;
-        box-shadow: 1px 2px 4px #888888;
-        border:none;
-        font-size: 0;
+    &.navbar-button {
         position:absolute;
         top:7.5rem;
         right:0rem;
         z-index: 10;
+    }
+
+    &.cancel-button {
+        background: none;
+        float:right;
     }
 
     .menu-icon {
@@ -219,43 +246,16 @@ button {
     }
 }
 
-button:hover,
-button:focus {
-    transform: scale(1.1);
-    transform-origin: center;
-    img {
-        transform: scale(1.1);
-        transform-origin: center;
-    }
-}
-
-button:focus {
-    outline: 1px solid #fff;
-    outline-offset: -4px;
-}
-
-button:active {
-    transform: scale(0.99);
-}
-
-img {
-    transition: background 250ms ease-in-out, 
-                transform 150ms ease;
-}
-
-label, span {
-    font-family: @handwriting;
-    font-size: 1.5rem;
-}
-
-li {
-    list-style-type: none;
-}
-
 .flex-container {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-evenly;
+}
+
+.panel {
+    background-color: @paper;
+    box-shadow: 1px 2px 4px #888888;
+    border-radius: 5px;
 }
 
 .authentication-panel {
@@ -270,22 +270,16 @@ li {
 
 .authentication-form {
     button {
-        border:2px solid grey;
-        border-radius:1rem;
         background-color: white;
-        box-shadow: 1px 2px 4px grey;
     }
 }
 
-.panel {
-    background-color: @paper;
-    box-shadow: 1px 2px 4px #888888;
-    border-radius: 5px;
-}
-
-// weekly spread
 .week-container {
     .flex-container;
+
+    .week-menu {
+        border-top: 1px solid #98989c;
+    }
 
     .weekday-block {
         .panel;
@@ -293,6 +287,7 @@ li {
     
         h2 {
             text-align: right;
+            border-bottom: 1px solid #98989c;
         }
     
         h3 {
@@ -300,17 +295,16 @@ li {
             display: block;
             white-space: nowrap;
         }
+
+        .week-bookmark {
+            float:left;
+        }
     }
 
     #week-label {
         font-size: 6rem;
         white-space: pre-line;
         text-align: center;
-    }
-
-    .task-event-form {
-        border: 1px solid black;
-        width:13rem;
     }
 
     .week-items-container {
@@ -324,3 +318,169 @@ li {
     }
 }
 
+.month-container {
+    .flex-container;
+
+    .month {
+        width:25rem;
+
+        @media @screen-sm {
+            width:50rem;
+        }
+    }
+
+    caption {
+        font-family: @cursive;
+        
+        h1 {
+            font-size: 3rem;
+        }
+    }
+
+    table {
+        width:100%;
+        border-collapse: collapse;
+        table-layout: fixed;
+
+        tr:nth-child(odd) {
+            background: #b6b6ba;
+        }
+
+        tr:last-child {
+            border-bottom: 1px solid #98989c;
+        }
+
+        th {
+            height: 2rem;
+            background: none;
+            font-family: @cursive;
+            font-size:1.2rem;
+
+            &:not(:last-child) {
+                border-right: 1px solid #98989c;
+            }
+        }
+
+        td {
+            text-align: center;
+            height: 4rem;
+            padding:0;
+            transition: background 100ms ease-in-out;
+            position: relative;
+
+            @media @screen-sm {
+                height: 6rem;
+            }
+
+            &:hover {
+                background: grey;
+                cursor: pointer;
+                position: relative;
+
+                &.disabled {
+                    background:inherit;
+                    cursor: inherit;
+                }
+            }
+
+            &:not(:last-child) {
+                border-right: 1px solid #98989c;
+            }
+
+            &:not(:first-child) {
+                border-left: 1px solid #98989c;
+            }
+
+            &.disabled {
+                border:none;
+            }
+
+            
+            &.today {
+                background: @wood;
+            }
+
+            button:hover {
+                transform: none;
+            }
+        }
+
+        button {
+            border:none;
+            margin:auto;
+            padding:0;
+            background: none;
+            box-shadow: none;
+        }
+    }
+
+    .dots {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        margin: auto;
+    }
+
+    .bookmark-icon {
+        position: absolute;
+        top: -3px;
+        right: 0;
+    }
+
+    #magnifiedDayDialog {
+        width:25rem;
+        border:none;
+        box-shadow: 1px 2px 4px #888888;
+        border-radius: 5px;
+    }
+}
+
+.form-inline {  
+    display: flex;
+    flex-flow: row wrap;
+    align-items: center;
+
+    .checkbox {
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        appearance: none;
+        height: 1.5625rem;
+        width: 1.5625rem;
+        background-image: url('/images/icons/check_box_outline_blank_black_24dp.svg');
+        cursor: pointer;
+    }
+
+    .checkbox:checked {
+        height: 1.5625rem;
+        width: 1.5625rem;
+        background: url('/images/icons/check_box_black_24dp.svg');
+    }
+
+    &.task-event-form {
+        border-top: 1px solid #bdbdbd;
+        border-bottom: 1px solid #bdbdbd;
+
+        label {
+            margin: 5px 10px 5px 0;
+            white-space: nowrap;
+        }
+
+        input {
+            vertical-align: middle;
+            margin: 5px 10px 5px 0;
+            padding: 10px;
+            background-color: #fff;
+            border: 1px solid #ddd;
+            flex: 2;
+            min-width: 0;
+            margin-right:0;
+        }
+
+        button {
+            color: white;
+            cursor: pointer;
+            display:inline-flex;
+        }
+    }
+}
