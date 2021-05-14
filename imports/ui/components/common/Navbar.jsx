@@ -1,6 +1,13 @@
 import React, { Fragment, useState } from 'react';
 import { Menu } from '/imports/ui/components/common/Menu.jsx';
 
+/*
+This component is the container for the header/title, menu button, and menu items
+Keeps an object that determines which features are enabled (sent to Menu component)
+
+Properties:
+    user - the logged in user
+*/
 export const Navbar = ({ user }) => {
     const logout = () => {
         Meteor.logout();
@@ -11,8 +18,8 @@ export const Navbar = ({ user }) => {
     const enabledFeatures = {
         dashboard: false,
         index: false,
-        weeklySpread: false,
-        monthlySpread: false,
+        weeklySpread: true,
+        monthlySpread: true,
         statistics: false,
         archives: false
     };
@@ -39,7 +46,7 @@ export const Navbar = ({ user }) => {
                         </div>
                         <div className="navbar-buttons">
                             
-                            <button className="navbar-button round-icon p-8" onClick={ () => setShowMenu(!showMenu) }>
+                            <button aria-label="Menu" className="navbar-button round-icon p-8" onClick={ () => setShowMenu(!showMenu) }>
                                 { showMenu ? (
                                     <div className="menu-icon open">
                                         <span></span>
@@ -63,6 +70,7 @@ export const Navbar = ({ user }) => {
                     logout={ logout }
                     enabledFeatures={ enabledFeatures }
                     name={ name }
+                    setShowMenu={ setShowMenu }
                 ></Menu>
             }
         </header>

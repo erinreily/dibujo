@@ -16,7 +16,7 @@ export const UsernamePasswordForm = ({ type, submitAction, buttonText }) => {
             <div className="mb-16">
                 <label htmlFor="username">Username</label> <br></br>
                 
-                <input
+                <input className="text-input"
                     type="text"
                     placeholder="Username"
                     name="username"
@@ -28,7 +28,7 @@ export const UsernamePasswordForm = ({ type, submitAction, buttonText }) => {
             <div className="mb-16">
                 <label htmlFor="password">Password</label> <br></br>
                 
-                <input 
+                <input className="text-input"
                     type="text"
                     placeholder="Password"
                     name="password"
@@ -38,10 +38,10 @@ export const UsernamePasswordForm = ({ type, submitAction, buttonText }) => {
             </div>
 
             { type === "createAccount" && (
-                <div>
+                <div className="mb-16">
                     <label htmlFor="preferredName">Preferred Name (optional)</label> <br></br>
                     
-                    <input 
+                    <input className="text-input"
                         type="text"
                         placeholder="Preferred name"
                         name="preferredName"
