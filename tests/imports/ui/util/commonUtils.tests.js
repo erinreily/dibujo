@@ -32,7 +32,7 @@ if (Meteor.isServer) {
                 const offsetDate = getOffsetDate(relativeDate, 7);
                 assert.equal(offsetDate.getMonth(), expectedDate.getMonth());
                 assert.equal(offsetDate.getDate(), expectedDate.getDate());
-                assert.equal(offsetDate.getYear(), expectedDate.getYear());
+                assert.equal(offsetDate.getFullYear(), expectedDate.getFullYear());
             });
 
             it('should return date negatively offset a number of days from the given date', () => {
@@ -42,7 +42,7 @@ if (Meteor.isServer) {
                 const offsetDate = getOffsetDate(relativeDate, -7);
                 assert.equal(offsetDate.getMonth(), expectedDate.getMonth());
                 assert.equal(offsetDate.getDate(), expectedDate.getDate());
-                assert.equal(offsetDate.getYear(), expectedDate.getYear());
+                assert.equal(offsetDate.getFullYear(), expectedDate.getFullYear());
             });
         });
 
@@ -93,7 +93,7 @@ if (Meteor.isServer) {
                     const offsetDate = getOffsetDateFromWeekday(relativeDate, weekday.day);
                     assert.equal(offsetDate.getMonth(), expectedDate.getMonth());
                     assert.equal(offsetDate.getDate(), expectedDate.getDate());
-                    assert.equal(offsetDate.getYear(), expectedDate.getYear());
+                    assert.equal(offsetDate.getFullYear(), expectedDate.getFullYear());
                 });
 
                 it('should get the offset date across months based on weekday', () => {
@@ -103,7 +103,7 @@ if (Meteor.isServer) {
                     const offsetDate = getOffsetDateFromWeekday(relativeDate, weekday.day);
                     assert.equal(offsetDate.getMonth(), expectedDate.getMonth());
                     assert.equal(offsetDate.getDate(), expectedDate.getDate());
-                    assert.equal(offsetDate.getYear(), expectedDate.getYear());
+                    assert.equal(offsetDate.getFullYear(), expectedDate.getFullYear());
                 });
             });
         });

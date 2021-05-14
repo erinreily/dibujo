@@ -33,11 +33,16 @@ Add arrows to move through past and future weeks
 v3.0.0
 Add monthly spread
     To do -
-        Add new page for month
-        Add monthly goals
-        Associate month events with weekday events
-        Arrows to move through past and future months
-        Add menu options to switch between weekly and monthly spreads
+        Add new page for month - done
+        Associate month events with weekday events - done
+        Arrows to move through past and future months - done
+        Add menu options to switch between weekly and monthly spreads - done
+
+v3.1.0
+Add monthly goals
+Add spinner for loading times
+Add menu transition
+Fix unit tests
 
 Future improvements
     Index - list of links to go immediately to a weekly or monthly spread

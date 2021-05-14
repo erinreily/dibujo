@@ -2,6 +2,7 @@ import { Meteor } from 'meteor/meteor';
 import React from 'react';
 import { AuthenticationWrapper } from "/imports/ui/components/authentication/AuthenticationWrapper.jsx";
 import { Week } from "/imports/ui/components/weeklySpread/Week.jsx";
+import { Month } from "/imports/ui/components/monthlySpread/Month.jsx";
 import { useTracker } from 'meteor/react-meteor-data';
 import { Switch, Route } from "react-router-dom";
 
@@ -16,6 +17,7 @@ export const Main = () => {
                     <Switch>
                         <Route exact path='/' component={ Week }/>
                         <Route path='/weeklyspread' component={ Week }/>
+                        <Route path='/monthlyspread' component={ Month }/>
                     </Switch>
                 </div>
             ) : (
